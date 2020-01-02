@@ -14,7 +14,7 @@ namespace ShlyashApi
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
-             name: "index",
+             name: "Initial",
              url: "{action}",
              defaults: new { controller = "Index", action = "Index" });
 

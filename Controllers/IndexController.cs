@@ -1,5 +1,9 @@
 ﻿using System.Web.Mvc;
+
+using System;
 using ShlyashApi.Models;
+using System.Data.SQLite;
+using static System.IO.File;
 
 namespace ShlyashApi.Controllers
 {
@@ -19,13 +23,27 @@ namespace ShlyashApi.Controllers
         ,
                 Key="63nummnbynin"
             };
-            return View("About",tokenData);
+
+            ViewBag.Title = "Registarion";
+
+            return View("Index", tokenData);
         }
 
 
         public ActionResult Contact()
         {
             return Content("some info");
+        }
+        public string Statistics()
+        {
+
+            if (!Exists("AccessDB.sqlite"))
+            {
+                SQLiteConnection.CreateFile("AccessDB.sqlite");
+                return "DB creted"; 
+            }
+            else
+                return  "DB not creted";
         }
     }
 }
