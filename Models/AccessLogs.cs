@@ -4,7 +4,7 @@ namespace ShlyashApi.Models
     using System.Data.Entity;
     using System.Linq;
 
-    [DbConfigurationType(typeof(MySql.Data.Entity.MySqlEFConfiguration))]
+
     public class AccessLogs : DbContext
     {
         // Your context has been configured to use a 'AccessLogs' connection string from your application's 
@@ -14,7 +14,7 @@ namespace ShlyashApi.Models
         // If you wish to target a different database and/or database provider, modify the 'AccessLogs' 
         // connection string in the application configuration file.
         public AccessLogs()
-            : base("name=AccessLogs")
+            : base("name=SQLITE")
         {
         }
 

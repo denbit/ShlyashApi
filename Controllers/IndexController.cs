@@ -5,6 +5,7 @@ using ShlyashApi.Models;
 using System.Data.SQLite;
 using DBFile = System.IO.File;
 using System.Text;
+using System.Configuration;
 
 namespace ShlyashApi.Controllers 
 {
@@ -12,20 +13,27 @@ namespace ShlyashApi.Controllers
     {
         public string HealthCheck()
         {
-            return "Mobile and desktop API is online";
+            System.Diagnostics.Debug.WriteLine( String.Join(" ",ConfigurationManager.AppSettings.AllKeys));
+            return  "Mobile and desktop API is online";
         }
         [HttpGet]
         public ActionResult Index()
         {
 
+
             TokenData tokenData = new TokenData
             {
-                client = new MobileClient { Name = "Android", Type = ClientType.Mobile }
-        ,
-                Key="63nummnbynin"
-            };
+                Id = 0,
+                    client = new MobileClient { Name = "Android", Type = ClientType.Mobile },
+                    Key = "63nummnbynin"
+                };
 
             ViewBag.Title = "Registarion";
+            using (var DB = new AccessLogs())
+            {
+                DB.TokenDatas.Add(tokenData);
+                DB.SaveChanges();
+            }
 
             return View("Index", tokenData);
         }
