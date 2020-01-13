@@ -1,5 +1,5 @@
 ﻿using System.Web.Mvc;
-
+using System.Diagnostics;
 using System;
 using ShlyashApi.Models;
 using System.Data.SQLite;
@@ -13,7 +13,7 @@ namespace ShlyashApi.Controllers
     {
         public string HealthCheck()
         {
-            System.Diagnostics.Debug.WriteLine( String.Join(" ",ConfigurationManager.AppSettings.AllKeys));
+            System.Diagnostics.Debug.WriteLine( String.Join(" ",ConfigurationManager .AppSettings.AllKeys));
             return  "Mobile and desktop API is online";
         }
         [HttpGet]
@@ -31,8 +31,8 @@ namespace ShlyashApi.Controllers
             ViewBag.Title = "Registarion";
             using (var DB = new AccessLogs())
             {
-                DB.TokenDatas.Add(tokenData);
-                DB.SaveChanges();
+                //DB.TokenDatas.Add(tokenData);
+             //   DB.SaveChanges();
             }
 
             return View("Index", tokenData);
@@ -41,12 +41,18 @@ namespace ShlyashApi.Controllers
 
         public ActionResult Contact()
         {
-            return Content("some info");
+            string path = AppDomain.CurrentDomain.BaseDirectory;
+            var db = ConfigurationManager.ConnectionStrings["SQLITE"] ;
+            string fullDB = db.ConnectionString.Replace(@"~\", path);
+            Debug.WriteLine(fullDB);
+            return Content("some info"); 
         }
         public string Statistics()
         {
             StringBuilder answer = new StringBuilder();
-            if (!DBFile.Exists(@"C:\Users\Lenovo\source\repos\ShlyashApi\Content\AccessDB.sqlite"))
+            string db = ConfigurationManager.AppSettings.Get("connectionString");
+            string path = AppDomain.CurrentDomain.BaseDirectory;
+            if (!DBFile.Exists(path+@"\AccessDB.sqlite"))
             {
                 SQLiteConnection.CreateFile(@"C:\Users\Lenovo\source\repos\ShlyashApi\Content\AccessDB.sqlite");
                 answer.Append("DB file created"); 
