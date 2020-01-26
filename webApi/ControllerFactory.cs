@@ -23,7 +23,11 @@ namespace ShlyahApi.Client
             mock.Setup(m => m.Users).Returns(new List<User> {
             new User{
             Id=1,
-            Email="INFO@langivi.technology"
+            Email="info@langivi.technology"
+            },
+                        new User{
+            Id=2,
+            Email="elika@langivi.technology"
             }
             }.AsQueryable());
             

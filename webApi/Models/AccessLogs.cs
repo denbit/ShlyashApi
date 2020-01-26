@@ -14,7 +14,7 @@ namespace ShlyahApi.Client.Models
         // If you wish to target a different database and/or database provider, modify the 'AccessLogs' 
         // connection string in the application configuration file.
         public AccessLogs()
-            : base("name=SQLITE")
+            : base("name=AccessLogs")
         {
         }
 

@@ -7,6 +7,7 @@ using System.Data.SQLite;
 using DBFile = System.IO.File;
 using System.Text;
 using System.Configuration;
+using ShlyahApi.UserStore.DBContexts;
 
 namespace ShlyahApi.Client.Controllers 
 {
@@ -20,7 +21,8 @@ namespace ShlyahApi.Client.Controllers
         [HttpGet]
         public ActionResult Index()
         {
-
+            System.Diagnostics.Debug.WriteLine(new SQLiteDBContext());
+          
 
             TokenData tokenData = new TokenData
             {

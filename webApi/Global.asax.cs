@@ -8,6 +8,8 @@ using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
 using ShlyahApi.Client.Models;
+using ShlyahApi.UserStore.DBContexts;
+using ShlyahApi.UserStore.Seeds;
 
 namespace ShlyahApi.Client
 { 
@@ -21,6 +23,7 @@ namespace ShlyahApi.Client
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             Database.SetInitializer<AccessLogs>(null);
+            Database.SetInitializer<SQLiteDBContext>(new UserSeed());
             ControllerBuilder.Current.SetControllerFactory(new ControllerFactory());
 
         }
