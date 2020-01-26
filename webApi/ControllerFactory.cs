@@ -5,6 +5,9 @@ using System.Linq;
 using System.Web;
 using System.Web.Routing;
 using Ninject;
+using ShlyahApi.Client.Repo;
+using Moq;
+using ShlyahApi.UserStore.Entity;
 
 namespace ShlyahApi.Client
 {
@@ -13,9 +16,19 @@ namespace ShlyahApi.Client
         protected IKernel kernel { get; set; }
 
         public ControllerFactory()
-        {
+        { 
             kernel = new StandardKernel();
 
+            Mock<ICommonUserRepo> mock = new Mock<ICommonUserRepo>();
+            mock.Setup(m => m.Users).Returns(new List<User> {
+            new User{
+            Id=1,
+            Email="INFO@langivi.technology"
+            }
+            }.AsQueryable());
+            
+
+            kernel.Bind<ICommonUserRepo>().ToConstant(mock.Object);
         }
         protected override IController GetControllerInstance(RequestContext requestContext, Type controllerType)
         {

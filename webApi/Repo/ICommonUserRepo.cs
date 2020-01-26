@@ -4,11 +4,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ShlyahApi.UserStore.Entity;
 
 namespace ShlyahApi.Client.Repo
 {
-   public  interface IAccessLogsRepo
+   public  interface ICommonUserRepo
     {
-         IQueryable<TokenData> tokenDatas { get; }
+         IQueryable<User> Users { get; }
     }
 }

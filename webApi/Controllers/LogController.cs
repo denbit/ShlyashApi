@@ -16,11 +16,11 @@ namespace ShlyahApi.Client.Controllers
         {
             return View();
         }
-        public ViewResult ViewLog()
-        {
-            Mock<IAccessLogsRepo> mock = new Mock<IAccessLogsRepo>();
-            mock.Setup(m => m.tokenDatas).Returns(new List<TokenData> { new TokenData(), new TokenData() }.AsQueryable());
-            return View(mock.Object);
-        }
+      //  public ViewResult ViewLog()
+        //{
+            //Mock<IAccessLogsRepo> mock = new Mock<IAccessLogsRepo>();
+            //mock.Setup(m => m.tokenDatas).Returns(new List<TokenData> { new TokenData(), new TokenData() }.AsQueryable());
+            //return View(mock.Object);
+        //}
     }
 }

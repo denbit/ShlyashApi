@@ -348,6 +348,7 @@
     <Compile Include="ControllerFactory.cs" />
     <Compile Include="Controllers\IndexController.cs" />
     <Compile Include="Controllers\LogController.cs" />
+    <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Models\Entensions.cs" />
     <Compile Include="Models\Types\ClientType.cs" />
     <Compile Include="Models\MobileClient.cs" />
@@ -363,7 +364,8 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
-    <Compile Include="Repo\IAccessLogsRepo.cs" />
+    <Compile Include="Repo\ICommonUserRepo.cs" />
+    <Compile Include="Repo\MockRepo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
@@ -417,6 +419,7 @@
     <Content Include="app.config" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
+    <Content Include="Views\Users\List.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -441,6 +444,12 @@
     <Analyzer Include="..\packages\Microsoft.NetCore.Analyzers.2.9.8\analyzers\dotnet\cs\Microsoft.NetCore.CSharp.Analyzers.dll" />
     <Analyzer Include="..\packages\Microsoft.NetFramework.Analyzers.2.9.8\analyzers\dotnet\cs\Microsoft.NetFramework.Analyzers.dll" />
     <Analyzer Include="..\packages\Microsoft.NetFramework.Analyzers.2.9.8\analyzers\dotnet\cs\Microsoft.NetFramework.CSharp.Analyzers.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\UserStore\UserStore.csproj">
+      <Project>{616fe4e4-e702-4382-be4a-4d4a30f1a213}</Project>
+      <Name>UserStore</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
