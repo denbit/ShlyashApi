@@ -345,6 +345,7 @@
     <Compile Include="App_Start\Interface1.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="ControllerFactory.cs" />
     <Compile Include="Controllers\IndexController.cs" />
     <Compile Include="Controllers\LogController.cs" />
     <Compile Include="Models\Entensions.cs" />

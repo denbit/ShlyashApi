@@ -21,6 +21,7 @@ namespace ShlyahApi.Client
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             Database.SetInitializer<AccessLogs>(null);
+            ControllerBuilder.Current.SetControllerFactory(new ControllerFactory());
 
         }
     }
